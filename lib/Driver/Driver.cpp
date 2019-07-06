@@ -19,6 +19,7 @@
 #include "ToolChains/Cuda.h"
 #include "ToolChains/Darwin.h"
 #include "ToolChains/DragonFly.h"
+#include "ToolChains/EBC.h"
 #include "ToolChains/FreeBSD.h"
 #include "ToolChains/Fuchsia.h"
 #include "ToolChains/Gnu.h"
@@ -4660,6 +4661,9 @@ const ToolChain &Driver::getToolChain(const ArgList &Args,
       case llvm::Triple::riscv32:
       case llvm::Triple::riscv64:
         TC = llvm::make_unique<toolchains::RISCVToolChain>(*this, Target, Args);
+        break;
+      case llvm::Triple::ebc:
+        TC = llvm::make_unique<toolchains::EBCToolChain>(*this, Target, Args);
         break;
       default:
         if (Target.getVendor() == llvm::Triple::Myriad)

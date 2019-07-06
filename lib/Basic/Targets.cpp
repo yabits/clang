@@ -19,6 +19,7 @@
 #include "Targets/ARM.h"
 #include "Targets/AVR.h"
 #include "Targets/BPF.h"
+#include "Targets/EBC.h"
 #include "Targets/Hexagon.h"
 #include "Targets/Lanai.h"
 #include "Targets/Le64.h"
@@ -241,6 +242,9 @@ TargetInfo *AllocateTarget(const llvm::Triple &Triple,
   case llvm::Triple::bpfeb:
   case llvm::Triple::bpfel:
     return new BPFTargetInfo(Triple, Opts);
+
+  case llvm::Triple::ebc:
+    return new EBCTargetInfo(Triple, Opts);
 
   case llvm::Triple::msp430:
     return new MSP430TargetInfo(Triple, Opts);
