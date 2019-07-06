@@ -34,6 +34,8 @@ void EBC::Linker::ConstructJob(Compilation &C, const JobAction &JA,
     CmdArgs.push_back(
         Args.MakeArgString(std::string("-out:") + Output.getFilename()));
 
+  CmdArgs.push_back(Args.MakeArgString(std::string("-entry:main")));
+
   CmdArgs.push_back("-nologo");
 
   Args.AddAllArgValues(CmdArgs, options::OPT__SLASH_link);
